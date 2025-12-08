@@ -26,8 +26,8 @@ const menuItems: MenuItem[] = [
   { icon: <Home className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Home", href: "/" },
   { icon: <Compass className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Journey", href: "/journey" },
   { icon: <FileText className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Projects", href: "/projects" },
-  { icon: <Github className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />, href: "https://github.com/yourusername", iconOnly: true, isExternal: true },
-  { icon: <Instagram className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />, href: "https://instagram.com/yourusername", iconOnly: true, isExternal: true },
+  { icon: <Github className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14" />, href: "https://github.com/muhammedrafii", iconOnly: true, isExternal: true },
+  { icon: <Instagram className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14" />, href: "https://instagram.com/muhammedrafi06", iconOnly: true, isExternal: true },
   { icon: <Sun className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, href: "#theme", isThemeToggler: true },
 ];
 
