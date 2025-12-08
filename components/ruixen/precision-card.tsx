@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle } from "lucide-react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface PrecisionCardProps {
   leftTitle: string;
@@ -16,7 +16,9 @@ interface PrecisionCardProps {
   certificationText: string;
   rightButton: string;
 
-  leftImage?: string; // NEW: Image for left card
+  // Updated: accept string URL or StaticImageData
+  leftImage?: string | StaticImageData;
+
 }
 
 export default function PrecisionCard({
@@ -30,7 +32,6 @@ export default function PrecisionCard({
   rightItems,
   certificationText,
   rightButton,
-
   leftImage,
 }: PrecisionCardProps) {
   return (
@@ -38,8 +39,7 @@ export default function PrecisionCard({
 
       {/* Left Card */}
       <Card className="w-full max-w-md bg-background shadow-lg rounded-2xl border-none">
-
-        {/* Image section like PortfolioCard */}
+        {/* Image section */}
         {leftImage && (
           <div className="relative w-full flex justify-center mt-4">
             <div className="w-20 h-20 rounded-full border-4 border-white dark:border-zinc-900 shadow-md overflow-hidden">
@@ -58,10 +58,7 @@ export default function PrecisionCard({
           <h3 className="text-muted-foreground text-sm font-medium">
             {leftSubtitle}
           </h3>
-
-          <CardTitle className="text-2xl font-semibold">
-            {leftTitle}
-          </CardTitle>
+          <CardTitle className="text-2xl font-semibold">{leftTitle}</CardTitle>
         </CardHeader>
 
         <CardContent className="space-y-4 text-center">
@@ -69,11 +66,7 @@ export default function PrecisionCard({
 
           <div className="flex flex-wrap gap-2 justify-center">
             {tags.map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="text-xs px-3 py-1"
-              >
+              <Badge key={tag} variant="secondary" className="text-xs px-3 py-1">
                 {tag}
               </Badge>
             ))}
@@ -115,7 +108,6 @@ export default function PrecisionCard({
           </div>
         </CardContent>
       </Card>
-
     </div>
   );
 }

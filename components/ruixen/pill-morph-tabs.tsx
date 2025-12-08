@@ -3,8 +3,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-/* Use your shadcn Tab primitives - adjust import path if your project differs */
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 export interface PillTab {
@@ -20,21 +18,9 @@ interface PillMorphTabsProps {
   className?: string;
 }
 
-/**
- * PillMorphTabs
- *
- * - Uses shadcn Tabs primitives for accessibility.
- * - Active pill is an animated morphing element (framer-motion).
- * - Glassmorphism + subtle gradient background.
- * - Responsive and keyboard accessible (handled by Tabs).
- */
 export default function PillMorphTabs({
   items = [
-    {
-      value: "overview",
-      label: "Overview",
-      panel: <div>Overview content</div>,
-    },
+    { value: "overview", label: "Overview", panel: <div>Overview content</div> },
     { value: "features", label: "Features", panel: <div>Feature list</div> },
     { value: "pricing", label: "Pricing", panel: <div>Pricing & plans</div> },
     { value: "faq", label: "FAQ", panel: <div>FAQ content</div> },
@@ -46,17 +32,11 @@ export default function PillMorphTabs({
   const first = items[0]?.value ?? "tab-0";
   const [value, setValue] = React.useState<string>(defaultValue ?? first);
   const listRef = React.useRef<HTMLDivElement | null>(null);
-  const triggerRefs = React.useRef<Record<string, HTMLButtonElement | null>>(
-    {},
-  );
+  const triggerRefs = React.useRef<Record<string, HTMLButtonElement | null>>({});
 
-  const [indicator, setIndicator] = React.useState<{
-    left: number;
-    width: number;
-  } | null>(null);
+  const [indicator, setIndicator] = React.useState<{ left: number; width: number } | null>(null);
   const [isExpanding, setIsExpanding] = React.useState(false);
 
-  // measure position & width of active trigger and set indicator
   const measure = React.useCallback(() => {
     const list = listRef.current;
     const activeEl = triggerRefs.current[value];
@@ -72,7 +52,6 @@ export default function PillMorphTabs({
     });
   }, [value]);
 
-  // measure on mount, value changes and resize
   React.useEffect(() => {
     measure();
     const ro = new ResizeObserver(measure);
@@ -85,10 +64,9 @@ export default function PillMorphTabs({
     };
   }, [measure]);
 
-  // when value changes, trigger a short "expand" animation effect
   React.useEffect(() => {
     setIsExpanding(true);
-    const id = window.setTimeout(() => setIsExpanding(false), 300); // duration for expand feel
+    const id = window.setTimeout(() => setIsExpanding(false), 300);
     return () => window.clearTimeout(id);
   }, [value]);
 
@@ -102,19 +80,15 @@ export default function PillMorphTabs({
         <div
           ref={listRef}
           className={cn(
-            "relative",
-            // glass + subtle gradient
-            "inline-flex items-center gap-2",
+            "relative inline-flex items-center gap-2",
             "bg-white/6 dark:bg-white/3 backdrop-blur-sm",
-            "border border-white/6 dark:border-white/6",
+            "border border-white/6 dark:border-white/6"
           )}
           style={{
-            // optional soft gradient overlay (works both light/dark)
-            background:
-              "linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00))",
+            background: "linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00))",
           }}
         >
-          {/* animated pill indicator */}
+          {/* Animated pill indicator */}
           {indicator && (
             <motion.div
               layout
@@ -122,20 +96,13 @@ export default function PillMorphTabs({
               animate={{
                 left: indicator.left,
                 width: indicator.width,
-                // slight vertical expand when "isExpanding"
                 scaleY: isExpanding ? 1.06 : 1,
                 borderRadius: isExpanding ? 24 : 999,
               }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 28,
-              }}
+              transition={{ type: "spring", stiffness: 300, damping: 28 }}
               className="absolute pointer-events-none top-1 bottom-1 rounded-full"
               style={{
-                // gradient + subtle glass fill + soft border & shadow
-                background:
-                  "linear-gradient(90deg, rgba(124,58,237,0.18), rgba(6,182,212,0.14))",
+                background: "linear-gradient(90deg, rgba(124,58,237,0.18), rgba(6,182,212,0.14))",
                 boxShadow: "0 6px 20px rgba(16,24,40,0.08)",
                 border: "1px solid rgba(255,255,255,0.04)",
                 left: indicator.left,
@@ -144,7 +111,7 @@ export default function PillMorphTabs({
             />
           )}
 
-          {/* blur glow behind pill for extra depth */}
+          {/* Blur glow behind pill */}
           {indicator && (
             <motion.div
               layout
@@ -161,7 +128,6 @@ export default function PillMorphTabs({
             />
           )}
 
-          {/* TabsList using shadcn TabsTrigger */}
           <TabsList className="relative flex gap-1 p-1">
             {items.map((it) => {
               const isActive = it.value === value;
@@ -169,14 +135,12 @@ export default function PillMorphTabs({
                 <TabsTrigger
                   key={it.value}
                   value={it.value}
-                  ref={(el: HTMLButtonElement | null) =>
-                    (triggerRefs.current[it.value] = el)
-                  }
+                  ref={(el: HTMLButtonElement | null) => {
+                    triggerRefs.current[it.value] = el; // ✅ must return void
+                  }}
                   className={cn(
                     "relative z-10 px-4 py-2 rounded-full text-sm font-medium transition-colors",
-                    isActive
-                      ? "text-white"
-                      : "text-foreground/80 hover:text-foreground",
+                    isActive ? "text-white" : "text-foreground/80 hover:text-foreground"
                   )}
                 >
                   {it.label}
@@ -186,7 +150,6 @@ export default function PillMorphTabs({
           </TabsList>
         </div>
 
-        {/* Panels */}
         <div className="mt-4">
           {items.map((it) => (
             <TabsContent key={it.value} value={it.value} className="p-2">

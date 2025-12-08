@@ -1,9 +1,13 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
+// next.config.ts
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
-    domains: ["github.com"], // Add any external domains you need
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
 };
 
