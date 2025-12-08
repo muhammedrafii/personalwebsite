@@ -26,8 +26,8 @@ const menuItems: MenuItem[] = [
   { icon: <Home className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Home", href: "/" },
   { icon: <Compass className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Journey", href: "/journey" },
   { icon: <FileText className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Projects", href: "/projects" },
-  { icon: <Github className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, href: "https://github.com/yourusername", iconOnly: true, isExternal: true },
-  { icon: <Instagram className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, href: "https://instagram.com/yourusername", iconOnly: true, isExternal: true },
+  { icon: <Github className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />, href: "https://github.com/yourusername", iconOnly: true, isExternal: true },
+  { icon: <Instagram className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />, href: "https://instagram.com/yourusername", iconOnly: true, isExternal: true },
   { icon: <Sun className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, href: "#theme", isThemeToggler: true },
 ];
 
@@ -88,10 +88,9 @@ export default function HoverGradientNavBar() {
                       text-gray-700 dark:text-gray-300
                       hover:text-blue-500 dark:hover:text-blue-300
                       transition-all
-                      ${item.iconOnly ? "w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9" : ""}`}
+                      ${item.iconOnly ? "w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" : ""}`}
                   >
                     {item.icon}
-                    {!item.iconOnly && <span className="ml-1 text-[10px] md:text-xs lg:text-sm">{item.label}</span>}
                   </a>
                 ) : (
                   <Link
@@ -102,7 +101,7 @@ export default function HoverGradientNavBar() {
                       text-gray-700 dark:text-gray-300
                       transition-all
                       ${pathname === item.href
-                        ? "bg-white/30 dark:bg-black/30 text-blue-600 dark:text-blue-400"
+                        ? "bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400"
                         : "hover:text-blue-500 dark:hover:text-blue-300"}
                       ${item.iconOnly ? "w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9" : ""}`}
                   >
