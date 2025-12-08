@@ -21,13 +21,13 @@ interface MenuItem {
   iconOnly?: boolean;
 }
 
-// Removed Connect
+// Menu items
 const menuItems: MenuItem[] = [
   { icon: <Home className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Home", href: "/" },
   { icon: <Compass className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Journey", href: "/journey" },
   { icon: <FileText className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Projects", href: "/projects" },
-  { icon: <Github className="w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9" />, href: "https://github.com/yourusername", iconOnly: true, isExternal: true },
-  { icon: <Instagram className="w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9" />, href: "https://instagram.com/yourusername", iconOnly: true, isExternal: true },
+  { icon: <Github className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />, href: "https://github.com/yourusername", iconOnly: true, isExternal: true },
+  { icon: <Instagram className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />, href: "https://instagram.com/yourusername", iconOnly: true, isExternal: true },
   { icon: <Sun className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, href: "#theme", isThemeToggler: true },
 ];
 
@@ -35,6 +35,7 @@ export default function HoverGradientNavBar() {
   const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
 
+  // Load theme from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("theme");
     if (saved === "dark") {
@@ -43,6 +44,7 @@ export default function HoverGradientNavBar() {
     }
   }, []);
 
+  // Toggle theme
   const toggleTheme = () => {
     const dark = !isDark;
     setIsDark(dark);
@@ -52,7 +54,8 @@ export default function HoverGradientNavBar() {
 
   return (
     <div className="fixed top-2 left-1/2 -translate-x-1/2 w-[98%] z-50">
-      <nav className="flex justify-center
+      <nav
+        className="flex justify-center
         px-2 py-2 lg:px-3 lg:py-2
         rounded-3xl
         bg-white/10 dark:bg-black/10
@@ -98,11 +101,10 @@ export default function HoverGradientNavBar() {
                     className={`flex items-center justify-center
                       px-2 py-1.5 md:px-3 md:py-2 lg:px-3 lg:py-2
                       rounded-lg
-                      text-gray-700 dark:text-gray-300
                       transition-all
                       ${pathname === item.href
                         ? "bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400"
-                        : "hover:text-blue-500 dark:hover:text-blue-300"}
+                        : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-300"}
                       ${item.iconOnly ? "w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9" : ""}`}
                   >
                     {item.icon}
