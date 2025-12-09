@@ -2,7 +2,6 @@
 import React from "react";
 import HoverGradientNavBar from "@/components/ruixen/hover-gradient-navbar";
 import PrecisionCard from "@/components/ruixen/precision-card";
-
 const rafiImagePath = "/images/rafi.png";
 
 export default function HomePage() {
@@ -26,8 +25,9 @@ export default function HomePage() {
             rightButton="Explore Solutions →"
             leftImage={rafiImagePath}
           />
-       
-</div>
+        </div>
+
+      
 
       </div>
     </div>
