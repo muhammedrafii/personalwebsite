@@ -2,7 +2,6 @@
 import React from "react";
 import HoverGradientNavBar from "@/components/ruixen/hover-gradient-navbar";
 import PrecisionCard from "@/components/ruixen/precision-card";
-import { Experience5 } from "@/components/experience5"; // Adjust path
 
 const rafiImagePath = "/images/rafi.png";
 
@@ -27,13 +26,7 @@ export default function HomePage() {
             rightButton="Explore Solutions →"
             leftImage={rafiImagePath}
           />
-        </div>
-
-        {/* Experience Section */}
-        <div className="container-fluid d-flex justify-content-center">
-  <div style={{ width: "100%", maxWidth: "960px" }}>
-    <Experience5 title="Education" />
-  </div>
+       
 </div>
 
       </div>
