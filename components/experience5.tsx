@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CheckCircle2 } from "lucide-react";
+import { Star } from "lucide-react"; // Navbar-style icon
 
 interface ExperienceItem {
   title: string;
@@ -17,80 +17,69 @@ interface Experience5Props {
 }
 
 const Experience5 = ({
-  title = "Work Experience",
-  experience = [
-    {
-      title: "Senior Full Stack Developer",
-      details: "Full-Time • Remote • San Francisco CA",
-      period: "Mar 2022 - Present",
-      company: "Anthropic",
-      description:
-        "Led development of scalable web applications using React, Node.js, and PostgreSQL. Architected microservices infrastructure serving 100K+ users. Mentored junior developers and established coding standards.",
-    },
-    {
-      title: "Frontend Engineer",
-      details: "Full-Time • Onsite • Austin TX",
-      period: "Jan 2020 - May 2021",
-      company: "Vercel",
-      description:
-        "Developed full-stack applications using JavaScript, Python, and MySQL. Participated in agile development process and code reviews. Contributed to open-source projects and internal tooling.",
-    },
-    {
-      title: "Junior Web Developer",
-      details: "Full-Time • Onsite • Denver CO",
-      period: "Aug 2018 - Dec 2019",
-      company: "Figma",
-      description:
-        "Created responsive websites using HTML, CSS, and JavaScript. Worked with WordPress and PHP for content management. Assisted in debugging and testing web applications.",
-    },
-  ],
+  title = "Education",
+ experience = [
+  {
+    title: "MSc Computer Science",
+    details: "Sn College • Cherthala",
+    period: "2024 - Present",
+    company: "",
+    description:
+      "Pursuing advanced studies in computer science with focus on software engineering, data structures, and machine learning. Engaged in practical projects to build full-stack applications and improve problem-solving skills.",
+  },
+  {
+    title: "BSc Computer Science",
+    details: "Sn College • Cherthala",
+    period: "2022 - 2024",
+    company: "",
+    description:
+      "Completed undergraduate studies in computer science with strong foundation in programming, databases, and web development. Participated in coding projects, hackathons, and collaborative learning activities.",
+  },
+  {
+    title: "Plus Two",
+    details: "Leo 13 • Alappuzha",
+    period: "2019 - 2021",
+    company: "",
+    description:
+      "Completed higher secondary education with focus on science and mathematics, building analytical thinking and problem-solving abilities as a foundation for computer science studies.",
+  },
+]
+
 }: Experience5Props) => {
   return (
     <section className="py-16 md:py-32">
-      <div className="container">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="mb-12 font-serif text-4xl font-medium leading-tight md:text-7xl">
-            {title}
-          </h2>
+      <div className="container mx-auto max-w-7xl">
+        <h2 className="mb-12 font-serif text-4xl md:text-7xl font-medium leading-tight">
+          {title}
+        </h2>
 
-          <div className="space-y-8">
-            {experience.map(
-              ({ title, details, period, company, description }, idx) => (
-                <div key={idx} className="flex flex-col gap-4 md:flex-row md:items-start">
-                  {/* Active Icon - Tick */}
-                  <div className="flex-shrink-0">
-                    <div
-                      className={`flex h-6 w-6 items-center justify-center rounded-full ring-2 ${
-                        idx === 0
-                          ? "bg-yellow-400 ring-yellow-400 text-white" // First icon mango yellow
-                          : "bg-blue-500 ring-blue-500 text-white" // Others blue
-                      }`}
-                    >
-                      <CheckCircle2 className="h-4 w-4 text-white" />
-                    </div>
-                  </div>
+        <div className="space-y-8">
+          {experience.map(({ title, details, period, company, description }, idx) => (
+            <div
+              key={idx}
+              className="border-border border-b pb-6 last:border-b-0"
+            >
+              <div className="flex flex-col gap-4 md:flex-row md:items-start">
+                <div className="md:w-2/3 flex items-center gap-3">
+                  {/* Star icon */}
+                  <Star className="h-5 w-5 text-yellow-400" />
 
-                  {/* Content */}
-                  <div className="md:ml-6 md:w-2/3">
-                    <h3
-                      className={`text-xl font-semibold ${
-                        idx === 0 ? "text-yellow-400" : "text-blue-500"
-                      }`}
-                    >
-                      {title}
-                    </h3>
-                    <p className="text-muted-foreground mb-2 text-sm">{details}</p>
-                    <p className="text-muted-foreground mb-2 text-sm leading-relaxed">{description}</p>
-                  </div>
-
-                  <div className="text-right md:w-1/3 md:text-right">
-                    <p className="mb-1 text-sm font-medium">{period}</p>
-                    <p className="text-muted-foreground text-sm">{company}</p>
-                  </div>
+                  {/* Highlight all titles */}
+                  <h3 className="text-xl text-yellow-500 font-semibold">
+                    {title}
+                  </h3>
                 </div>
-              ),
-            )}
-          </div>
+
+                <div className="text-right md:w-1/3 md:text-right">
+                  <p className="mb-1 text-sm font-medium">{period}</p>
+                  <p className="text-muted-foreground text-sm">{company}</p>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{details}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

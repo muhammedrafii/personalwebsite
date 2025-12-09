@@ -30,12 +30,12 @@ export default function HomePage() {
         </div>
 
         {/* Experience Section */}
-        <div className="w-full max-w-5xl">
-          <Experience5
-            title="My Work Experience"
-           
-          />
-        </div>
+        <div className="container-fluid d-flex justify-content-center">
+  <div style={{ width: "100%", maxWidth: "960px" }}>
+    <Experience5 title="Education" />
+  </div>
+</div>
+
       </div>
     </div>
   );
