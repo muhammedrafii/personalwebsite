@@ -32,24 +32,20 @@ const menuItems: MenuItem[] = [
 ];
 
 export default function HoverGradientNavBar() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const pathname = usePathname();
 
-  // Load theme from localStorage
+  // Always start in dark theme
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") {
-      setIsDark(true);
-      document.documentElement.classList.add("dark");
-    }
+    document.documentElement.classList.add("dark");
+    setIsDark(true);
   }, []);
 
-  // Toggle theme
+  // Toggle theme (does NOT save to localStorage)
   const toggleTheme = () => {
     const dark = !isDark;
     setIsDark(dark);
     document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem("theme", dark ? "dark" : "light");
   };
 
   return (
