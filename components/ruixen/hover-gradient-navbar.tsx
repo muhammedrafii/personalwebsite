@@ -26,8 +26,8 @@ const menuItems: MenuItem[] = [
   { icon: <Home className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Home", href: "/" },
   { icon: <Compass className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Journey", href: "/journey" },
   { icon: <FileText className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, label: "Projects", href: "/projects" },
-  { icon: <Github className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14" />, href: "https://github.com/muhammedrafii", iconOnly: true, isExternal: true },
-  { icon: <Instagram className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14" />, href: "https://instagram.com/muhammedrafi06", iconOnly: true, isExternal: true },
+  { icon: <Github className="w-5 h-4 md:w-8 md:h-8 lg:w-10 lg:h-10" />, href: "https://github.com/muhammedrafii", iconOnly: true, isExternal: true },
+  { icon: <Instagram className="w-5 h-4 md:w-8 md:h-8 lg:w-10 lg:h-10" />, href: "https://instagram.com/muhammedrafi06", iconOnly: true, isExternal: true },
   { icon: <Sun className="w-4 h-4 md:w-5 md:h-5 lg:w-5 lg:h-5" />, href: "#theme", isThemeToggler: true },
 ];
 
@@ -91,7 +91,7 @@ export default function HoverGradientNavBar() {
                       text-gray-700 dark:text-gray-300
                       hover:text-blue-500 dark:hover:text-blue-300
                       transition-all
-                      ${item.iconOnly ? "w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" : ""}`}
+                      ${item.iconOnly ? "w-9 h-9 md:w-10 md:h-10 lg:w-11 lg:h-11" : ""}`}
                   >
                     {item.icon}
                   </a>
@@ -105,10 +105,12 @@ export default function HoverGradientNavBar() {
                       ${pathname === item.href
                         ? "bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400"
                         : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-300"}
-                      ${item.iconOnly ? "w-7 h-7 md:w-8 md:h-8 lg:w-9 lg:h-9" : ""}`}
+                      ${item.iconOnly ? "w-9 h-9 md:w-10 md:h-10 lg:w-11 lg:h-11" : ""}`}
                   >
                     {item.icon}
-                    {!item.iconOnly && <span className="ml-1 text-[10px] md:text-xs lg:text-sm">{item.label}</span>}
+                    {!item.iconOnly && (
+                      <span className="ml-1 text-[10px] md:text-xs lg:text-sm">{item.label}</span>
+                    )}
                   </Link>
                 )}
               </li>
